@@ -1,4 +1,4 @@
-name: Update live commits
+name: Update README
 
 on:
   schedule:
@@ -6,21 +6,33 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [".github/scripts/**"]
+    paths: ["update_readme.py"]
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-readme
+  cancel-in-progress: true
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python .github/scripts/update_readme.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild auto sections
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python update_readme.py
+
       - name: Commit if changed
         run: |
           git config user.name "readme-bot"
           git config user.email "readme-bot@users.noreply.github.com"
           git add README.md
-          git diff --cached --quiet || git commit -m "chore: refresh live commits"
-          git push
+          git diff --cached --quiet || (git commit -m "chore: refresh README [skip ci]" && git push)
