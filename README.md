@@ -96,7 +96,7 @@ return "sp_" + hmacSha256(data);
 ### 🔎 Case 002 · GitHub Auditor `WORKING`
 
 <div align="center">
-  <img src="terminals/auditor.svg" alt="Terminal session for GitHub Auditor" width="100%" />
+  <img src=".github/auditor.svg" alt="Terminal session for GitHub Auditor" width="100%" />
 </div>
 
 | | |
@@ -116,11 +116,11 @@ return "sp_" + hmacSha256(data);
 ### 🧪 Case 003 · Smaller builds
 
 <div align="center">
-  <img src="terminals/tracker.svg" alt="Terminal session for the Salesforce Internship Tracker" width="100%" />
+  <img src=".github/tracker.svg" alt="Terminal session for the Salesforce Internship Tracker" width="100%" />
 </div>
 
 <div align="center">
-  <img src="terminals/dish.svg" alt="Terminal session for the Dish Management System" width="100%" />
+  <img src=".github/dish.svg" alt="Terminal session for the Dish Management System" width="100%" />
 </div>
 
 | Build | What's actually there | Status |
@@ -133,7 +133,7 @@ return "sp_" + hmacSha256(data);
 ### 📐 Case 004 · Designed, not built
 
 <div align="center">
-  <img src="terminals/designed.svg" alt="Terminal session for the designed projects" width="100%" />
+  <img src=".github/designed.svg" alt="Terminal session for the designed projects" width="100%" />
 </div>
 
 | Design | Idea | Status |
