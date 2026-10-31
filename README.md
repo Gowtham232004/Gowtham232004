@@ -230,7 +230,7 @@ I'd rather list my gaps than have you find them.
 
 ## 🤝 Let's talk
 
-If you read one thing, read [`DockerExecutionService.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/service/DockerExecutionService.java#L165-L190) and ask me why each flag is there. I can tell you.
+If you read one thing, read [`DockerExecutionService.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/service/DockerExecutionService.java#L165-L190) and implementation right here. Let's see what you've built.
 
 <div align="center">
 
