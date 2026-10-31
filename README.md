@@ -1,191 +1,197 @@
 <div align="center">
-  <img src="banner.svg" alt="Gowtham M S terminal banner" width="100%" />
+  <img src="banner.svg" alt="Gowtham M S, Java and Spring Boot backend engineer. Animated SkillProof request path with a blocked attacker and rotating attack and defense pairs." width="100%" />
 </div>
 
 <br/>
 
 <div align="center">
 
-**Java / Spring Boot backend developer · B.Tech CSE, REVA University '27 · CGPA 8.5**
+**Most profiles say what the developer knows. This one links to the code that proves it.**
 
-[Case files](#-case-files) · [Stack](#-stack-by-layer) · [Live data](#-live-from-my-github) · [Milestones](#-milestones) · [Contact](#-lets-talk)
+[Proof in 60 seconds](#-proof-in-60-seconds) · [Case files](#-case-files) · [Build log](#-build-log) · [Stack with receipts](#-stack-with-receipts) · [Live data](#-live-from-my-github) · [Contact](#-lets-talk)
 
 <!--START_STATS-->
-**6** original repositories · **11** languages · **1,345 KB** of code · refreshed `31 Oct 2026` (UTC)
+*Stats appear after the first workflow run.*
 <!--END_STATS-->
 
 </div>
 
 ---
 
-## 👋 About
+## ⚡ Proof in 60 seconds
 
-I build backend systems and I assume someone will try to abuse them. That habit comes from experience: the first version of my capstone was beaten by generic AI-written answers, and fixing it taught me more than any tutorial.
+Each row is a claim and the exact place in the code where you can check it.
 
-```yaml
-name:        Gowtham M S
-based_in:    Karnataka, India
-studying:    B.Tech Computer Science, REVA University (2023-2027), CGPA 8.5/10
-target_role: Java Spring Boot backend / DevOps
-core_stack:  Java, Spring Boot, Python, FastAPI, Next.js, Docker, MySQL
-how_i_learn: build first, read the docs when it breaks
-open_to:     internships and entry-level backend / DevOps roles
-```
+| I claim | Check it yourself |
+|---|---|
+| Untrusted code runs with **no network, a read-only filesystem, 1 CPU, a 128-process cap** | [`DockerExecutionService.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/service/DockerExecutionService.java#L165-L190) |
+| Badges are **HMAC-SHA256** tokens over `userId : repo : score : timestamp`, so editing any field invalidates them | [`HmacUtil.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/util/HmacUtil.java#L14-L40) |
+| Auth is **GitHub OAuth + JWT** with role enforcement | [`JwtAuthFilter.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/config/JwtAuthFilter.java) · [`SecurityConfig.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/config/SecurityConfig.java) |
+| Candidate answers carry **integrity telemetry**: tab switches, paste count, answer timing, stored with the badge | [`SubmitAnswersRequest.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/dto/request/SubmitAnswersRequest.java) · [`Badge.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/model/Badge.java) |
+| I **test** the trust logic: badges, verification, live sessions, confidence tiers, recruiter endpoints | [`src/test`](https://github.com/Gowtham232004/Skill_Proof/tree/main/backend-core/src/test/java/com/skillproof/backend_core) (8 test classes) |
+| I found hard-coded secrets in my own config on day 3 and removed them | [commit `8be4efa`](https://github.com/Gowtham232004/Skill_Proof/commit/8be4efa) |
+| A second system detects **7 kinds of suspicious commit patterns** | [`git_analyzer.py`](https://github.com/Gowtham232004/github-auditor/blob/main/git_analyzer.py#L195-L277) |
+| Public endpoints are **rate limited per IP** | [`rate_limiter.py`](https://github.com/Gowtham232004/github-auditor/blob/main/rate_limiter.py) |
 
 ---
 
 ## 🗄️ Case files
 
-Every project below is written as a case: the problem, what I did, what it runs on, and its honest status. **Shipped** means the code is on my GitHub. **Designed** means documented but not built yet.
+Each case lists the problem, what I built, my role and an honest status.
 
-### 🛡️ Case 001: SkillProof `SHIPPED` `FLAGSHIP`
+### 🛡️ Case 001 · SkillProof `WORKING` `FLAGSHIP`
 
 > **Resumes are claims. SkillProof makes them evidence.**
 
-**Problem.** Anyone can write "Java expert" on a resume. Recruiters have no cheap way to check. And once I added AI evaluation, a second problem appeared: generic AI-written answers scored too high on my own platform.
-
-**What it does.** GitHub OAuth → analyses your actual code → asks questions grounded in *your* repository → runs your code in a sandbox → issues a signed badge anyone can verify.
+| | |
+|---|---|
+| **Problem** | Resumes and portfolios are easy to inflate, and once AI evaluates answers, generic AI-written answers can look convincing. In my first version they scored too high. |
+| **What it does** | GitHub OAuth → repo ingestion → questions grounded in *your* code → AI evaluation with a rubric and guardrails → confidence tier → signed badge. Recruiters get a dashboard with evidence, decisions (`VERIFIED`, `NEEDS_LIVE_INTERVIEW`, `REJECT`), candidate compare, live validation sessions and Jitsi video rooms. Coding challenges run against hidden tests in a Docker sandbox. |
+| **Size** | About 13,000 lines of Java across 101 files, 2,000 lines of Python, 9,000 lines of TypeScript, 43 REST endpoints (by mapping annotation count), 92 commits |
+| **My role** | Team of 3. I wrote the large majority of `backend-core`, `backend-ai` and the frontend (`git shortlog` shows it). Teammates handled documentation, weekly reports and parts of the frontend. |
+| **Stack** | Java 21 · Spring Boot 3 · FastAPI (Python 3.11) · Groq Llama 3.1 · Next.js 14 · TypeScript · MySQL 8 · Docker |
+| **Timeline** | 19 Mar 2026 → 25 Apr 2026 |
+| **Status** | Runs locally across three services. No public deployment linked, no CI yet. See [what's next](#-whats-next). |
 
 ```mermaid
 flowchart LR
-    A[Developer] -->|GitHub OAuth| B[Next.js 14]
-    B -->|JWT + RBAC| C[Spring Boot 3 API]
-    C -->|grounded questions| D[FastAPI AI service]
-    D -->|Groq Llama 3.1| E[(Evaluation)]
-    C -->|hidden tests| F[Docker sandbox<br/>network-isolated]
-    C --> G[(MySQL)]
-    C -->|HMAC-SHA256| H[Signed badge]
-    H --> I[Public badge page<br/>skill radar chart]
-    J[Recruiter] -->|live mode| C
+    A[Candidate] -->|GitHub OAuth| B[Next.js 14]
+    B -->|JWT| C[Spring Boot 3<br/>auth, orchestration, RBAC]
+    C -->|repo-aware questions,<br/>evaluation| D[FastAPI AI service<br/>Groq Llama 3.1]
+    C -->|hidden tests| E[Docker sandbox<br/>no network, read-only]
+    C --> F[(MySQL 8)]
+    C -->|HMAC-SHA256| G[Signed badge<br/>public badge page]
+    H[Recruiter] -->|dashboard, live sessions| C
 ```
 
-**The threat model.**
-
-| Attack | Defense |
-|---|---|
-| Generic answers that sound right | Questions grounded in the candidate's own repository, plus prompt constraints that harden the evaluator |
-| Pasting an answer without writing code | Docker sandbox that runs code against **hidden test cases** |
-| Calling out from inside the sandbox | Network isolation |
-| Forging a result | **HMAC-SHA256** signed badge tokens, public badge page |
-
-**Features:** GitHub OAuth · JWT + role-based access control · recruiter live mode · public badge page with skill radar chart · Jitsi-based live pair programming.
-
-**Stack:** Java 21 · Spring Boot 3 · Python FastAPI (isolated AI service) · Groq Llama 3.1 · Next.js 14 · MySQL · Docker
-
-<details>
-<summary><b>🔍 How signed badges are verified (simplified, illustrative)</b></summary>
+**The real badge token logic**, straight from [`HmacUtil.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/util/HmacUtil.java):
 
 ```java
-// A badge is only valid if its signature matches the payload.
-// Compare in constant time so the check itself leaks nothing.
-boolean verify(String payload, byte[] signature, SecretKey key) throws Exception {
-    Mac mac = Mac.getInstance("HmacSHA256");
-    mac.init(key);
-    byte[] expected = mac.doFinal(payload.getBytes(StandardCharsets.UTF_8));
-    return MessageDigest.isEqual(expected, signature);
-}
+// Token = HMAC-SHA256(secret, userId + repoName + score + timestamp)
+// Any tampering with badge data invalidates this token.
+String data = userId + ":" + repoName + ":" + score + ":" + timestamp;
+return "sp_" + hmacSha256(data);
 ```
 
-Change one character in the payload and verification fails. That's the whole point.
-</details>
+**Attack → defense map**
+
+| Attack | Defense | Where |
+|---|---|---|
+| Generic AI-written answers | Questions generated from the candidate's own repo, mixed code-grounded and conceptual, weighted scoring, rubric guardrails | `backend-ai`, `VerificationService` |
+| Pasting or outsourcing answers | Integrity telemetry (tab switches, paste count, answer timing) sent with every submission and stored on the badge for recruiter review | `SubmitAnswersRequest`, `Badge` |
+| Hostile or cheating code | Hidden tests in a container with `--network none --read-only --pids-limit 128` and a memory cap | `DockerExecutionService` |
+| Forged or edited badge | HMAC-SHA256 signed token verified server-side | `HmacUtil`, `BadgeService` |
 
 [![Repo](https://img.shields.io/badge/Source-Skill__Proof-00f5a0?style=for-the-badge&logo=github&logoColor=black)](https://github.com/Gowtham232004/Skill_Proof)
 
-> 🧨 **Think you can get a generic answer past it?** Open an issue on [Skill_Proof](https://github.com/Gowtham232004/Skill_Proof/issues). Breaking it is the best feedback I can get.
+> 🧨 **Think you can get a generic answer past it?** Open an issue on [Skill_Proof](https://github.com/Gowtham232004/Skill_Proof/issues).
 
 ---
 
-### 🔎 Case 002: GitHub Auditor `ON GITHUB`
+### 🔎 Case 002 · GitHub Auditor `WORKING`
 
-A Python backend ([`github-auditor`](https://github.com/Gowtham232004/github-auditor)) paired with a TypeScript frontend ([`github-auditor-frontend`](https://github.com/Gowtham232004/github-auditor-frontend)). Details are in each repository.
-
----
-
-### 📈 Case 003: PipelineIQ `DESIGNED`
-
-**Problem.** CI/CD failures eat developer time, and most tools tell you *that* a build failed, not *what keeps failing and why*.
-
-**Design.** A developer productivity intelligence platform with five pillars: **Pipeline Health Score**, **Failure Pattern Intelligence**, **Commit Risk Scoring**, **Repository Fragility Index** and a **Weekly AI Digest**.
-
-**Why it's here.** It started as an over-scoped idea. I cut it down to a version I could actually build, and the full documentation is written. It isn't implemented yet and I'm saying so.
-
----
-
-### 🏠 Case 004: RentSahay `DESIGNED`
-
-**Problem.** Rental agreements are long, legal and different in every state, and tenants often sign without understanding them.
-
-**Design.** An AI platform that analyses a rental agreement against **state-specific Indian rent law**, using **RAG** over a ChromaDB knowledge base with Google Gemini. Two versions of formal documentation are written. It isn't implemented yet.
-
----
-
-### 🏁 Case 005: Hackathon builds `TEAM`
-
-Team projects built under time pressure at the **24-hour AutoML Hackathon (REVA University)** and the **Solaris X Grand Hackathon (RNSIT Luminus 2026)**.
-
----
-
-## 🧰 Stack by layer
-
-| Layer | What I use |
+| | |
 |---|---|
-| **Backend** | Java 21 · Spring Boot 3 · Python · FastAPI |
-| **Frontend** | Next.js · React · TypeScript |
-| **Data** | MySQL · ChromaDB |
-| **Security** | JWT · RBAC · HMAC-SHA256 · Docker sandboxing |
-| **DevOps** | Docker · GitHub Actions |
-| **AI integration** | Groq (Llama 3.1) · Google Gemini · RAG |
+| **Problem** | A GitHub profile can look impressive without the work behind it. Commit history shows patterns that a green contribution graph hides. |
+| **What it does** | Clones a user's repositories, analyses commit behaviour and scores authenticity from 0 to 100. Seven red-flag detectors: `bulk_upload`, `burst_activity`, `dominated_repo`, `generic_messages`, `low_activity`, `no_collaboration`, `suspicious_timing`. AI-written insights with a rule-based fallback if the AI call fails. Emailed reports. |
+| **Backend** | FastAPI · about 2,800 lines of Python · 14 distinct API routes · SQLite history · per-IP rate limiting · health monitor · structured logging · Docker |
+| **Frontend** | [`github-auditor-frontend`](https://github.com/Gowtham232004/github-auditor-frontend): Next.js 16 · React 19 · Tailwind 4 · Recharts · Framer Motion. Pages: analyze, results, compare, history, shareable badge. |
+| **My role** | Built both repos (21 of 23 backend commits and 17 of 17 frontend commits are mine). |
+| **Real-world lesson** | SMTP email wasn't compatible with my host (Render). Over one day of commits I moved from Gmail SMTP to Resend, hit domain-verification errors, and ended on SendGrid. |
+| **Status** | Working. Docker and Railway deploy configuration included. |
 
-<div align="center">
+[![Backend](https://img.shields.io/badge/Backend-github--auditor-5b8cff?style=for-the-badge&logo=github)](https://github.com/Gowtham232004/github-auditor) [![Frontend](https://img.shields.io/badge/Frontend-github--auditor--frontend-5b8cff?style=for-the-badge&logo=github)](https://github.com/Gowtham232004/github-auditor-frontend)
 
-<img src="https://skillicons.dev/icons?i=java,spring,python,fastapi,nextjs,react,ts,mysql,docker,git,github,githubactions&theme=dark" alt="stack icons" />
+---
 
-</div>
+### 🧪 Case 003 · Smaller builds
+
+| Build | What's actually there | Status |
+|---|---|---|
+| [**Salesforce Internship Tracker**](https://github.com/Gowtham232004/Salesforce_Internship_Tracker) | Tracks companies, internship positions, applications and interview rounds. 4 custom objects, 3 Apex triggers, 5 Apex classes (including an offer-expiration batch job), 3 validation rules. | Built and documented |
+| [**Dish Management System**](https://github.com/Gowtham232004/Dish_Management_System) | Starter layout: Spring Boot 3.2 backend with Security, JPA and JWT dependencies, React 19 client, Express prototype. | Scaffold only. No business logic yet. |
+
+---
+
+### 📐 Case 004 · Designed, not built
+
+| Design | Idea | Status |
+|---|---|---|
+| **PipelineIQ** | Developer productivity intelligence for CI/CD: pipeline health score, failure pattern intelligence, commit risk scoring, repository fragility index, weekly AI digest. | Fully documented, not implemented |
+| **RentSahay** | AI analysis of rental agreements against state-specific Indian rent law, using RAG with ChromaDB and Google Gemini. | Documented, not implemented |
+
+---
+
+## 🧭 Build log
+
+Dates come from first commits in git history.
+
+```mermaid
+timeline
+    title What I shipped, in order
+    2025-10 : GitHub Auditor backend : Authenticity score from commit patterns
+    2025-11 : Auditor dashboard : Compare, history, badges, email reports
+    2026-03 : SkillProof : Repo-grounded assessment, sandbox, signed badges
+    2026-06 : Salesforce Internship Tracker : Dish Management starter
+```
+
+Both flagship projects ask the same question from two angles: **does this developer's profile match what they can actually do?** The Auditor reads the history. SkillProof tests the understanding.
+
+---
+
+## 🧰 Stack with receipts
+
+| Technology | Where I used it | Proof |
+|---|---|---|
+| Java 21 · Spring Boot 3 | SkillProof core service: auth, orchestration, recruiter APIs, challenge execution | [`backend-core`](https://github.com/Gowtham232004/Skill_Proof/tree/main/backend-core) |
+| Spring Security · JWT | Role-based access in SkillProof, JWT dependencies in the Dish starter | [`config/`](https://github.com/Gowtham232004/Skill_Proof/tree/main/backend-core/src/main/java/com/skillproof/backend_core/config) |
+| Python · FastAPI | SkillProof AI service, GitHub Auditor API | [`backend-ai`](https://github.com/Gowtham232004/Skill_Proof/tree/main/backend-ai) · [`main.py`](https://github.com/Gowtham232004/github-auditor/blob/main/main.py) |
+| Next.js · TypeScript · React | SkillProof UI (Next 14), Auditor dashboard (Next 16, React 19) | [`frontend`](https://github.com/Gowtham232004/Skill_Proof/tree/main/frontend) · [`src/app`](https://github.com/Gowtham232004/github-auditor-frontend/tree/main/src/app) |
+| MySQL 8 | SkillProof persistence | [`setup-db.sql`](https://github.com/Gowtham232004/Skill_Proof/blob/main/setup-db.sql) |
+| SQLite | Auditor analysis history | [`database.py`](https://github.com/Gowtham232004/github-auditor/blob/main/database.py) |
+| Docker | SkillProof code sandbox, Auditor container config | [`DockerExecutionService`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/service/DockerExecutionService.java) · [`Dockerfile`](https://github.com/Gowtham232004/github-auditor/blob/main/Dockerfile) |
+| Groq (Llama 3.1) | SkillProof question generation and evaluation | [`backend-ai/app/main.py`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-ai/app/main.py) |
+| OpenAI API | Auditor AI insights, with a rule-based fallback | [`ai_insights.py`](https://github.com/Gowtham232004/github-auditor/blob/main/ai_insights.py) |
+| Recharts · Framer Motion · Tailwind 4 | Auditor dashboard charts, animation, styling | [`package.json`](https://github.com/Gowtham232004/github-auditor-frontend/blob/main/package.json) |
+| Salesforce Apex | Triggers, handlers and a batch job in the Internship Tracker | [repo](https://github.com/Gowtham232004/Salesforce_Internship_Tracker) |
 
 ---
 
 ## 📡 Live from my GitHub
 
-Everything in this section is generated by a GitHub Action every 6 hours. Forks are excluded, so it's all my own code.
+Everything in this section is regenerated by a GitHub Action every 6 hours. Forks, duplicates and other people's projects are excluded.
 
-### 🗂️ Every repo I've built
+### 🗂️ Every repo I built
 
 <!--START_PROJECTS-->
-| Project | What it is | Stack | Last push |
-|---|---|---|---|
-| [**Dish_Management_System**](https://github.com/Gowtham232004/Dish_Management_System) | — | HTML | `2026-10-23` |
-| [**github_auditor**](https://github.com/Gowtham232004/github_auditor) | — | Python | `2026-10-23` |
-| [**github-auditor-frontend**](https://github.com/Gowtham232004/github-auditor-frontend) | — | TypeScript | `2026-10-23` |
-| [**github-auditor**](https://github.com/Gowtham232004/github-auditor) | — | Python | `2026-10-23` |
-| [**Salesforce_Internship_Tracker**](https://github.com/Gowtham232004/Salesforce_Internship_Tracker) | — | Apex | `2026-06-06` |
-| [**Skill_Proof**](https://github.com/Gowtham232004/Skill_Proof) | AI-powered developer credibility platform. GitHub OAuth → code analysis → grounded questions → HMAC badge. | Java | `2026-06-06` |
+*Waiting for the first workflow run...*
 <!--END_PROJECTS-->
 
 ### 🧬 Code DNA
 
 <!--START_DNA-->
-```text
-TypeScript   ████████░░░░░░░░░░░░ 42.4%
-Java         ████████░░░░░░░░░░░░ 37.7%
-Python       ███░░░░░░░░░░░░░░░░░ 16.5%
-Apex         ░░░░░░░░░░░░░░░░░░░░  2.0%
-PowerShell   ░░░░░░░░░░░░░░░░░░░░  0.3%
-Shell        ░░░░░░░░░░░░░░░░░░░░  0.3%
-```
+*Waiting for the first workflow run...*
 <!--END_DNA-->
 
-### 🧾 Latest commits
+### 🧾 My latest commits
 
 <!--START_COMMITS-->
-| Date | Repo | Commit | What changed |
-|---|---|---|---|
-| `2026-10-23` | Dish_Management_System | [`83a7f56`](https://github.com/Gowtham232004/Dish_Management_System/commit/83a7f562d88964b12031e52b389c6a6d6d5ed6c0) | Merge pull request #1 from Gowtham232004/copilot/create-industry-stand |
-| `2026-10-23` | Dish_Management_System | [`13de219`](https://github.com/Gowtham232004/Dish_Management_System/commit/13de219407497c8d4ae87ba0ca5e307576005537) | Add comprehensive project README documentation |
-| `2026-10-23` | github_auditor | [`1f82efd`](https://github.com/Gowtham232004/github_auditor/commit/1f82efde4ce97c6fb160b3fc983deda239c4fd98) | Update README.md |
-| `2026-10-23` | github-auditor-frontend | [`ec205fb`](https://github.com/Gowtham232004/github-auditor-frontend/commit/ec205fb0b05a51059409a8ceb5378aee979d1811) | Update README.md |
-| `2026-10-23` | github-auditor | [`79a9da7`](https://github.com/Gowtham232004/github-auditor/commit/79a9da73a3f59f08e467f6aebc8e5e755e125085) | Update README.md |
-| `2026-06-18` | Dish_Management_System | [`89cbec7`](https://github.com/Gowtham232004/Dish_Management_System/commit/89cbec724bf1ee9888ea2572aa20d0d7351f0768) | chore: Initialize Spring Boot dishbackend project structure |
+*Waiting for the first workflow run...*
 <!--END_COMMITS-->
+
+---
+
+## 🔭 What's next
+
+I'd rather list my gaps than have you find them.
+
+| Gap | Why it matters | Status |
+|---|---|---|
+| CI for SkillProof | No automated build or test run on push yet | Next |
+| Containerise all three SkillProof services | `docker-compose.yml` runs MySQL only today | Next |
+| Tests for the Docker execution service | The 8 test classes cover badges, verification, live sessions, tiers and recruiter endpoints, not the sandbox runner | Next |
+| Deploy SkillProof | It runs locally only | Planned |
+| Build out the Dish Management domain layer | Currently a scaffold | Planned |
 
 ---
 
@@ -193,31 +199,26 @@ Shell        ░░░░░░░░░░░░░░░░░░░░  0.3%
 
 | | |
 |---|---|
-| 🏁 **Hackathons** | Participated in 2: Solaris X Grand Hackathon (RNSIT Luminus 2026) and a 24-hour AutoML Hackathon (REVA University) |
-| 🌍 **Open source** | Selected as a **GSSoC 2026** contributor |
-| 🦈 **GitHub** | **Pull Shark** achievement, awarded by GitHub for merged pull requests |
-| 🎓 **Academics** | B.Tech CSE at REVA University, CGPA **8.5 / 10** |
-| 🛠️ **Capstone** | SkillProof: full-stack, multi-service, with a real threat model |
-
----
-
-## 🧭 How I build
-
-1. **Threat-model first.** Ask who benefits from breaking it, then design for that person.
-2. **Isolate what you don't trust.** The AI service runs separately from the core API, and user code runs in a network-isolated sandbox.
-3. **Make results verifiable.** A claim without a signature is just text.
-4. **Cut scope honestly.** PipelineIQ shrank from a huge idea to five buildable pillars. Marking projects "designed" instead of "shipped" is part of the same habit.
+| 🏁 **Hackathons** | Participated in two: Solaris X Grand Hackathon (RNSIT Luminus 2026) and a 24-hour AutoML Hackathon (REVA University) |
+| 🌍 **Open source** | Selected as a GSSoC 2026 contributor |
+| 🦈 **GitHub** | Pull Shark achievement, awarded by GitHub for merged pull requests |
+| 🎓 **Academics** | B.Tech Computer Science, REVA University (2023-2027), CGPA 8.5 / 10 |
+| 🎯 **Looking for** | Java / Spring Boot backend and DevOps internships and entry-level roles |
 
 ---
 
 ## 🤝 Let's talk
 
-I'm looking for **Java / Spring Boot backend and DevOps** internships and entry-level roles. If you want to talk about designing systems that resist abuse, say hi.
+If you read one thing, read [`DockerExecutionService.java`](https://github.com/Gowtham232004/Skill_Proof/blob/main/backend-core/src/main/java/com/skillproof/backend_core/service/DockerExecutionService.java#L165-L190) and ask me why each flag is there. I can tell you.
 
 <div align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/YOUR-LINKEDIN/)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:YOUR-EMAIL@example.com)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Gowtham232004)
+[![GitHub](https://img.shields.io/badge/GitHub-Gowtham232004-181717?style=for-the-badge&logo=github)](https://github.com/Gowtham232004)
+[![Issues](https://img.shields.io/badge/Break_SkillProof-open_an_issue-ff5c7a?style=for-the-badge&logo=github)](https://github.com/Gowtham232004/Skill_Proof/issues)
+
+<!-- Add your LinkedIn and email badges here, e.g.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/<your-handle>/)
+[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:<your-email>)
+-->
 
 </div>
