@@ -43,7 +43,7 @@ Each case lists the problem, what I built, my role and an honest status.
 ### 🛡️ Case 001 · SkillProof `WORKING` `FLAGSHIP`
 
 <div align="center">
-  <img src="terminals/skillproof.svg" alt="Terminal session for SkillProof" width="100%" />
+  <img src="skillproof.svg" alt="Terminal session for SkillProof" width="100%" />
 </div>
 
 > **Resumes are claims. SkillProof makes them evidence.**
