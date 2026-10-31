@@ -1,17 +1,30 @@
 """Rebuilds the auto-generated sections of README.md from the GitHub API.
 Standard library only. Sections it owns (between marker comments):
   STATS     - one-line summary numbers
-  PROJECTS  - every public repo I built (forks and archived repos excluded)
+  PROJECTS  - every public repo I built (forks, archived, duplicates, upstream copies excluded)
   DNA       - language mix across those repos
-  COMMITS   - latest commits across my most recently active repos
+  COMMITS   - my latest commits across my most recently active repos
+Tables never contain blank cells: curated text > GitHub description > generated fallback.
 """
 import json, os, re, sys, urllib.request
 from collections import Counter
 from datetime import datetime, timezone
 
 USER = "Gowtham232004"
-SKIP = {USER}  # the profile repo itself
+# Not shown in the generated tables: the profile repo, a duplicate of github-auditor,
+# and an upstream open-source project I only keep a copy of.
+SKIP = {USER, "github_auditor", "story-spark-ai"}
 API = "https://api.github.com"
+
+# Curated one-liners (verified against the code). Anything missing falls back to the
+# repo's GitHub description, then to a generated line, so no cell is ever empty.
+DESCRIPTIONS = {
+    "Skill_Proof": "Developer credibility platform: repo-grounded assessment, Docker-sandboxed challenges, HMAC-signed badges. Team of 3.",
+    "github-auditor": "FastAPI service that scores how authentic a GitHub profile looks from its commit history, with 7 red-flag detectors and AI insights.",
+    "github-auditor-frontend": "Next.js 16 dashboard for GitHub Auditor: results, profile compare, history and shareable badge pages.",
+    "Dish_Management_System": "Starter layout for a dish and menu platform: Spring Boot 3.2 backend (Security, JPA, JWT dependencies) and a React 19 client. Business logic not built yet.",
+    "Salesforce_Internship_Tracker": "Salesforce internship tracker: 4 custom objects, 3 Apex triggers, 5 Apex classes and 3 validation rules.",
+}
 
 
 def get(path):
@@ -27,11 +40,15 @@ def clean(s, n):
     return (s or "").replace("|", "/").replace("\n", " ").strip()[:n]
 
 
+def describe(r):
+    text = DESCRIPTIONS.get(r["name"]) or clean(r["description"], 140)
+    return text or f"{r['language'] or 'Code'} project, last updated {r['pushed_at'][:10]}."
+
+
 def projects_block(repos):
     rows = ["| Project | What it is | Stack | Last push |", "|---|---|---|---|"]
     for r in repos:
-        desc = clean(r["description"], 110) or "—"
-        rows.append(f"| [**{r['name']}**]({r['html_url']}) | {desc} | {r['language'] or '—'} | `{r['pushed_at'][:10]}` |")
+        rows.append(f"| [**{r['name']}**]({r['html_url']}) | {describe(r)} | {r['language'] or 'Mixed'} | `{r['pushed_at'][:10]}` |")
     return "\n".join(rows)
 
 
@@ -66,18 +83,21 @@ def stats_block(repos, total):
 
 def commits_block(repos):
     items = []
-    for r in repos[:4]:
+    for r in repos[:5]:
         try:
-            for c in get(f"/repos/{USER}/{r['name']}/commits?per_page=3"):
-                items.append((c["commit"]["author"]["date"], r["name"], c))
+            for c in get(f"/repos/{USER}/{r['name']}/commits?author={USER}&per_page=4"):
+                msg = c["commit"]["message"].split("\n")[0]
+                if msg.startswith("Merge"):
+                    continue
+                items.append((c["commit"]["author"]["date"], r["name"], c, msg))
         except Exception:
             pass
     if not items:
         return None
     items.sort(key=lambda x: x[0], reverse=True)
     rows = ["| Date | Repo | Commit | What changed |", "|---|---|---|---|"]
-    for date, name, c in items[:6]:
-        rows.append(f"| `{date[:10]}` | {name} | [`{c['sha'][:7]}`]({c['html_url']}) | {clean(c['commit']['message'].split(chr(10))[0], 70)} |")
+    for date, name, c, msg in items[:6]:
+        rows.append(f"| `{date[:10]}` | {name} | [`{c['sha'][:7]}`]({c['html_url']}) | {clean(msg, 72)} |")
     return "\n".join(rows)
 
 
