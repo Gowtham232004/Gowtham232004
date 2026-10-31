@@ -1,20 +1,21 @@
 <div align="center">
-  <img src="banner.svg" alt="Gowtham M S, Java and Spring Boot backend engineer. Animated SkillProof request path with a blocked attacker and rotating attack and defense pairs." width="100%" />
-</div>
+  <img src="banner.svg" alt="Gowtham M S, 7th-semester Computer Science student at REVA University. Animated terminal running real commands against his project repositories." width="100%" />
 
-<br/>
-
-<div align="center">
-
-**Most profiles say what the developer knows. This one links to the code that proves it.**
-
-[Proof in 60 seconds](#-proof-in-60-seconds) · [Case files](#-case-files) · [Build log](#-build-log) · [Stack with receipts](#-stack-with-receipts) · [Live data](#-live-from-my-github) · [Contact](#-lets-talk)
+[![GitHub](https://img.shields.io/badge/GITHUB-Gowtham232004-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=github&logoColor=white)](https://github.com/Gowtham232004)
+[![SkillProof](https://img.shields.io/badge/FLAGSHIP-SkillProof-19d3c5?style=for-the-badge&labelColor=0b1a24)](https://github.com/Gowtham232004/Skill_Proof)
+[![GitHub Auditor](https://img.shields.io/badge/PROJECT-GitHub_Auditor-19d3c5?style=for-the-badge&labelColor=0b1a24)](https://github.com/Gowtham232004/github-auditor)
 
 <!--START_STATS-->
-**5** original repositories · **11** languages · **1,280 KB** of code · refreshed `31 Oct 2026` (UTC)
+*Stats appear after the first workflow run.*
 <!--END_STATS-->
 
 </div>
+
+## 👨‍💻 About
+
+7th-semester B.Tech CSE student at **REVA University** (CGPA 8.5). I built **SkillProof** (Spring Boot, FastAPI, Next.js, Docker) and **GitHub Auditor** (FastAPI, Next.js), and I care about how backend systems get abused and how to make that harder.
+
+**Right now:** exploring Kubernetes, TypeScript and RAG. Looking for backend and DevOps internships.
 
 ---
 
@@ -40,6 +41,10 @@ Each row is a claim and the exact place in the code where you can check it.
 Each case lists the problem, what I built, my role and an honest status.
 
 ### 🛡️ Case 001 · SkillProof `WORKING` `FLAGSHIP`
+
+<div align="center">
+  <img src="terminals/skillproof.svg" alt="Terminal session for SkillProof" width="100%" />
+</div>
 
 > **Resumes are claims. SkillProof makes them evidence.**
 
@@ -82,13 +87,17 @@ return "sp_" + hmacSha256(data);
 | Hostile or cheating code | Hidden tests in a container with `--network none --read-only --pids-limit 128` and a memory cap | `DockerExecutionService` |
 | Forged or edited badge | HMAC-SHA256 signed token verified server-side | `HmacUtil`, `BadgeService` |
 
-[![Repo](https://img.shields.io/badge/Source-Skill__Proof-00f5a0?style=for-the-badge&logo=github&logoColor=black)](https://github.com/Gowtham232004/Skill_Proof)
+[![Repo](https://img.shields.io/badge/Source-Skill__Proof-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=github&logoColor=white)](https://github.com/Gowtham232004/Skill_Proof)
 
 > 🧨 **Think you can get a generic answer past it?** Open an issue on [Skill_Proof](https://github.com/Gowtham232004/Skill_Proof/issues).
 
 ---
 
 ### 🔎 Case 002 · GitHub Auditor `WORKING`
+
+<div align="center">
+  <img src="terminals/auditor.svg" alt="Terminal session for GitHub Auditor" width="100%" />
+</div>
 
 | | |
 |---|---|
@@ -98,13 +107,21 @@ return "sp_" + hmacSha256(data);
 | **Frontend** | [`github-auditor-frontend`](https://github.com/Gowtham232004/github-auditor-frontend): Next.js 16 · React 19 · Tailwind 4 · Recharts · Framer Motion. Pages: analyze, results, compare, history, shareable badge. |
 | **My role** | Built both repos (21 of 23 backend commits and 17 of 17 frontend commits are mine). |
 | **Real-world lesson** | SMTP email wasn't compatible with my host (Render). Over one day of commits I moved from Gmail SMTP to Resend, hit domain-verification errors, and ended on SendGrid. |
-| **Status** | Working. Docker and Railway deploy configuration included. |
+| **Status** | Working. Frontend [deployed on Vercel](https://github-auditor-frontend.vercel.app); backend ships with Docker and Railway configuration. |
 
-[![Backend](https://img.shields.io/badge/Backend-github--auditor-5b8cff?style=for-the-badge&logo=github)](https://github.com/Gowtham232004/github-auditor) [![Frontend](https://img.shields.io/badge/Frontend-github--auditor--frontend-5b8cff?style=for-the-badge&logo=github)](https://github.com/Gowtham232004/github-auditor-frontend)
+[![Backend](https://img.shields.io/badge/Backend-github--auditor-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=github&logoColor=white)](https://github.com/Gowtham232004/github-auditor) [![Frontend](https://img.shields.io/badge/Frontend-github--auditor--frontend-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=github&logoColor=white)](https://github.com/Gowtham232004/github-auditor-frontend)
 
 ---
 
 ### 🧪 Case 003 · Smaller builds
+
+<div align="center">
+  <img src="terminals/tracker.svg" alt="Terminal session for the Salesforce Internship Tracker" width="100%" />
+</div>
+
+<div align="center">
+  <img src="terminals/dish.svg" alt="Terminal session for the Dish Management System" width="100%" />
+</div>
 
 | Build | What's actually there | Status |
 |---|---|---|
@@ -114,6 +131,10 @@ return "sp_" + hmacSha256(data);
 ---
 
 ### 📐 Case 004 · Designed, not built
+
+<div align="center">
+  <img src="terminals/designed.svg" alt="Terminal session for the designed projects" width="100%" />
+</div>
 
 | Design | Idea | Status |
 |---|---|---|
@@ -164,39 +185,19 @@ Everything in this section is regenerated by a GitHub Action every 6 hours. Fork
 ### 🗂️ Every repo I built
 
 <!--START_PROJECTS-->
-| Project | What it is | Stack | Last push |
-|---|---|---|---|
-| [**Dish_Management_System**](https://github.com/Gowtham232004/Dish_Management_System) | Starter layout for a dish and menu platform: Spring Boot 3.2 backend (Security, JPA, JWT dependencies) and a React 19 client. Business logic not built yet. | HTML | `2026-10-23` |
-| [**github-auditor-frontend**](https://github.com/Gowtham232004/github-auditor-frontend) | Next.js 16 dashboard for GitHub Auditor: results, profile compare, history and shareable badge pages. | TypeScript | `2026-10-23` |
-| [**github-auditor**](https://github.com/Gowtham232004/github-auditor) | FastAPI service that scores how authentic a GitHub profile looks from its commit history, with 7 red-flag detectors and AI insights. | Python | `2026-10-23` |
-| [**Salesforce_Internship_Tracker**](https://github.com/Gowtham232004/Salesforce_Internship_Tracker) | Salesforce internship tracker: 4 custom objects, 3 Apex triggers, 5 Apex classes and 3 validation rules. | Apex | `2026-06-06` |
-| [**Skill_Proof**](https://github.com/Gowtham232004/Skill_Proof) | Developer credibility platform: repo-grounded assessment, Docker-sandboxed challenges, HMAC-signed badges. Team of 3. | Java | `2026-06-06` |
+*Waiting for the first workflow run...*
 <!--END_PROJECTS-->
 
 ### 🧬 Code DNA
 
 <!--START_DNA-->
-```text
-TypeScript   █████████░░░░░░░░░░░ 44.6%
-Java         ████████░░░░░░░░░░░░ 39.6%
-Python       ██░░░░░░░░░░░░░░░░░░ 12.3%
-Apex         ░░░░░░░░░░░░░░░░░░░░  2.1%
-PowerShell   ░░░░░░░░░░░░░░░░░░░░  0.4%
-Shell        ░░░░░░░░░░░░░░░░░░░░  0.3%
-```
+*Waiting for the first workflow run...*
 <!--END_DNA-->
 
 ### 🧾 My latest commits
 
 <!--START_COMMITS-->
-| Date | Repo | Commit | What changed |
-|---|---|---|---|
-| `2026-10-23` | github-auditor-frontend | [`ec205fb`](https://github.com/Gowtham232004/github-auditor-frontend/commit/ec205fb0b05a51059409a8ceb5378aee979d1811) | Update README.md |
-| `2026-10-23` | github-auditor | [`79a9da7`](https://github.com/Gowtham232004/github-auditor/commit/79a9da73a3f59f08e467f6aebc8e5e755e125085) | Update README.md |
-| `2026-06-18` | Dish_Management_System | [`89cbec7`](https://github.com/Gowtham232004/Dish_Management_System/commit/89cbec724bf1ee9888ea2572aa20d0d7351f0768) | chore: Initialize Spring Boot dishbackend project structure |
-| `2026-06-17` | Dish_Management_System | [`366d57f`](https://github.com/Gowtham232004/Dish_Management_System/commit/366d57f4187e3ca08260fe1dec93bc0cf7ffac4a) | feat: add Express server for AI code explanation |
-| `2026-06-15` | Dish_Management_System | [`f10dc76`](https://github.com/Gowtham232004/Dish_Management_System/commit/f10dc761df1903ca3e7eaa6bafeb2d7cd3f33e41) | Initialize React frontend base setup |
-| `2026-06-06` | Salesforce_Internship_Tracker | [`2a6a785`](https://github.com/Gowtham232004/Salesforce_Internship_Tracker/commit/2a6a785a95d3424669ea9fe762e491e3d343e5af) | Update README.md |
+*Waiting for the first workflow run...*
 <!--END_COMMITS-->
 
 ---
@@ -219,7 +220,7 @@ I'd rather list my gaps than have you find them.
 
 | | |
 |---|---|
-| 🏁 **Hackathons** | Participated in two: Solaris X Grand Hackathon (RNSIT Luminus 2026) and a 24-hour AutoML Hackathon (REVA University) |
+| 🏁 **Hackathons** | RNSIT Grand Hackathon: built a developer-focused security and tooling project in a 24-hour team challenge. REVA 24-hour AutoML Hackathon: built an automated machine-learning pipeline prototype. |
 | 🌍 **Open source** | Selected as a GSSoC 2026 contributor |
 | 🦈 **GitHub** | Pull Shark achievement, awarded by GitHub for merged pull requests |
 | 🎓 **Academics** | B.Tech Computer Science, REVA University (2023-2027), CGPA 8.5 / 10 |
@@ -234,11 +235,9 @@ If you read one thing, read [`DockerExecutionService.java`](https://github.com/G
 <div align="center">
 
 [![GitHub](https://img.shields.io/badge/GitHub-Gowtham232004-181717?style=for-the-badge&logo=github)](https://github.com/Gowtham232004)
-[![Issues](https://img.shields.io/badge/Break_SkillProof-open_an_issue-ff5c7a?style=for-the-badge&logo=github)](https://github.com/Gowtham232004/Skill_Proof/issues)
+[![Issues](https://img.shields.io/badge/Break_SkillProof-open_an_issue-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=github)](https://github.com/Gowtham232004/Skill_Proof/issues)
 
-<!-- Add your LinkedIn and email badges here, e.g.
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/<your-handle>/)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:<your-email>)
--->
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-gowthamm--s-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gowtham-m-s-82b758294/)
+[![Email](https://img.shields.io/badge/Email-gowthamms034@gmail.com-19d3c5?style=for-the-badge&labelColor=0b1a24&logo=gmail&logoColor=white)](mailto:gowthamms034@gmail.com)
 
 </div>
